@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>Google Calendar Service</display-name>
+  <description>Google Calendar Service</description>
+  <context-param>
+    <param-name>serverLogDirectory</param-name>
+    <param-value>C:\appServer\tomcat\logs\CalendarService</param-value>
+  </context-param>
+  <context-param>
+    <param-name>virtualLogDirectory</param-name>
+    <param-value>/logs/CalendarService</param-value>
+  </context-param>
+  <context-param>
+    <param-name>httpHost</param-name>
+    <param-value>http://axpcgl.axin.fr:8080</param-value>
+  </context-param>
+  <context-param>
+    <param-name>serverIpAddress</param-name>
+    <param-value>172.16.1.133</param-value>
+  </context-param>
+  <context-param>
+    <param-name>webappClientId</param-name>
+    <param-value>618774370994-1jhhvfln7n96l2les3dl4vr6rt901nng.apps.googleusercontent.com</param-value>
+  </context-param>
+  <context-param>
+    <param-name>webappClientSecret</param-name>
+    <param-value>qc2yo1liZWlsO9NPR0P026N3</param-value>
+  </context-param>
+  <context-param>
+    <param-name>serviceAccountEmail</param-name>
+    <param-value>618774370994-p2bbtvgb1l38on98ftbrgk96tq40mvii@developer.gserviceaccount.com</param-value>
+  </context-param>
+  <context-param>
+    <param-name>serviceAccountKeyFile</param-name>
+    <param-value>key.p12</param-value>
+  </context-param>
+  <context-param>
+    <param-name>exportViewName</param-name>
+    <param-value>V_PLANNING_EXPORT</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>OracleServlet</servlet-name>
+    <servlet-class>fr.axin.gservices.servlet.OracleServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OracleJobSubmitServlet</servlet-name>
+    <servlet-class>fr.axin.gservices.servlet.OracleJobSubmitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OracleServlet</servlet-name>
+    <url-pattern>/OracleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OracleJobSubmitServlet</servlet-name>
+    <url-pattern>/OracleJobSubmitServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
