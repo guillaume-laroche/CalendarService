@@ -4,7 +4,7 @@
   <description>Google Calendar Service</description>
   <context-param>
     <param-name>serverLogDirectory</param-name>
-    <param-value>C:\appServer\tomcat\logs\CalendarService</param-value>
+    <param-value>/usr/local/tomcat7/webapps/logs/CalendarService</param-value>
   </context-param>
   <context-param>
     <param-name>virtualLogDirectory</param-name>
@@ -12,11 +12,11 @@
   </context-param>
   <context-param>
     <param-name>httpHost</param-name>
-    <param-value>http://axpcgl.axin.fr:8080</param-value>
+    <param-value>http://axpcint03.axin.fr:9080</param-value>
   </context-param>
   <context-param>
     <param-name>serverIpAddress</param-name>
-    <param-value>172.16.1.133</param-value>
+    <param-value>172.16.1.141</param-value>
   </context-param>
   <context-param>
     <param-name>webappClientId</param-name>

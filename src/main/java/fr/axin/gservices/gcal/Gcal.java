@@ -64,6 +64,9 @@ public class Gcal {
 
     public void addEvent(Gevent ev) throws IOException {
 		
+    	//0.4 Déplacement de la trace au début pour avoir le code évenement en cours si erreur
+    	fr.axin.gservices.util.LogUtils.log("Creation de " + ev.getGUID() + " / " + ev.getTitle(), out, log);
+    	
     	Event newEvent = new Event();    	
         
         newEvent.setSummary(ev.getTitle());       
@@ -119,27 +122,36 @@ public class Gcal {
         String eventUID = this.name + "_" + ev.getGUID();
         newEvent.setICalUID(eventUID);                 
 
-        calendar.events().insert(ID, newEvent).execute();        
-        fr.axin.gservices.util.LogUtils.log("Creation de " + newEvent.getICalUID() + " / " + newEvent.getSummary(), out, log);
+        calendar.events().insert(ID, newEvent).execute();                
         
         newEvent = null;
         
     }
 
     public void updateEvent(Gevent ev) throws IOException {    	    	
+    	
+    	//0.4 Déplacement de la trace au début pour avoir le code évenement en cours si erreur
+    	fr.axin.gservices.util.LogUtils.log("Mise a jour de " + ev.getGUID() + " / " + ev.getTitle(), out, log);
     	    	    	
     	Event currentEvent = calendar.events().get(ID, ev.getId()).execute();    	
     	
     	if(!currentEvent.getSummary().equals(ev.getTitle()))    			
     			currentEvent.setSummary(ev.getTitle());
     	
-    	if(!currentEvent.getDescription().equals(ev.getDescription()))
-    		currentEvent.setDescription(ev.getDescription());    	
+    	//0.4.1 : la description peut être nulle, il faut en tenir compte dans le test  
+    	if(currentEvent.getDescription() != null) {
+    		if(!currentEvent.getDescription().equals(ev.getDescription()))
+    			currentEvent.setDescription(ev.getDescription());    	
+    	}
+    	else
+    		currentEvent.setDescription(ev.getDescription());
     	
     	if(currentEvent.getLocation() != null) {
     		if(!currentEvent.getLocation().equals(ev.getLocation()))
     			currentEvent.setLocation(ev.getLocation());   
     	}
+    	else
+    			currentEvent.setLocation(ev.getLocation());
     	
     	if(!currentEvent.getColorId().equals(ev.getColorId()))
     		currentEvent.setColorId(ev.getColorId());    		    	
@@ -190,8 +202,7 @@ public class Gcal {
         }   
         
         Event updatedEvent = calendar.events().update(ID, ev.getId(), currentEvent).execute();
-        
-        LogUtils.log("Mise a jour de " + updatedEvent.getICalUID() + " / " + updatedEvent.getSummary(), out, log);        
+                     
     }
     
     public boolean cancelEvents(Date start, Date end) {    	    	    	

@@ -14,8 +14,8 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.1</version>
 				<configuration>
-					<url>http://axpcgl.axin.local:8080/manager/text</url>
-					<server>Tomcat_AXPCGL</server>
+					<url>http://axpcint03.axin.local:9080/manager/text</url>
+					<server>Tomcat_Winston</server>
 					<path>/CalendarService</path>
 				</configuration>
 			</plugin>
@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc14</artifactId>
-			<version>10.2.0.3.0</version>
+			<version>10.2.0.4.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gdata</groupId>

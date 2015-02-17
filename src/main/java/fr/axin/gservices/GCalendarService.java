@@ -17,8 +17,13 @@ import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
+/*
+ * 0.4.1 17/02/2015 GL : gestion de la valeur NULL sur la description de l'évenement
+ * 0.4   14/05/2014 GL : migration vers API v3 + authentification OAuth2
+ */
+
 public class GCalendarService {
-    private final static String version = "version 0.4, 2014/05/14";
+    private final static String version = "version 0.4.1, 2015/02/17";
     final static String gName = "CalendarService";
     final static String applicationName = "Google Calendar Service";
     static String gUsername = "";
